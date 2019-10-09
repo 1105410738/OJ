@@ -1,0 +1,22 @@
+
+#include<iostream>
+
+using namespace std;
+
+int main()
+{
+	int n, sum = 0;
+	cin >> n;
+	do
+	{
+		sum = sum++ * 2;
+		n--;
+		if (n == 0)
+		{
+			break;
+		}
+	} while (1);
+	cout << sum;
+}
+
+
