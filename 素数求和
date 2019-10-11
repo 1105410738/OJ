@@ -9,23 +9,21 @@ int main()
 	for (int p = 1; p <= m;p++)
 	{
 		cin >> n;
-
 		for (int i = n; i <= (n*n); i++)
 		{
-		
 			for (int z = 2; z <= i; z++)
 			{
-				 if (z == i){
+				 if (z == i)
+				 {
 						sum = sum + i; break;
-					}
+				}
 				else if (i%z == 0)
 				{
 					break;
-				}
-				
+				}		
 			}
 		}
 		cout << sum << endl;
-		
+		sum=0;
 	}
 }
