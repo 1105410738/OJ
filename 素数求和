@@ -6,12 +6,12 @@ int main()
 {
 	int n, m,z,sum=0;
 	cin >> m;
-	for (int p = 1; p <= m;p++)
+	for (int p = 1; p <= m;p++)//表示入m组案例
 	{
 		cin >> n;
-		for (int i = n; i <= (n*n); i++)
+		for (int i = n; i <= (n*n); i++)//求n到n*n之间的素数之和
 		{
-			for (int z = 2; z <= i; z++)
+			for (int z = 2; z <= i; z++)//判断是否为素数，注意：1不是素数
 			{
 				 if (z == i)
 				 {
