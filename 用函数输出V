@@ -1,0 +1,37 @@
+#include<iostream>
+using namespace std;
+void f(int n, char c);
+void f(int n, char c)
+{
+
+	for (int z = 1; z <= n; z++)
+	{
+
+		for (int c = 1; c < z; c++)
+		{
+			cout << " ";
+		}
+		if (z != n)
+		{
+			cout << c;
+		}
+		for (int x = z; x <= (n+(n-2))-z ; x++)
+		{
+			cout << " ";
+		}
+		cout << c << endl;
+
+	}
+	
+	
+	
+}
+int main()
+{
+	int n;
+	char c;
+	cin >> n;
+	cin >> c;
+	f(n, c);
+	return 0;
+}
