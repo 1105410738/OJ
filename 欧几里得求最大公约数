@@ -3,7 +3,10 @@
 using namespace std;
 int main()
 {
-	int a, b, n, temp;
+/*求a的b的最大公约数，思路：（若 a、b 全为0则它们的最大公约数不存在，此处a、b不会同时为0）若 a、b 其中之一为0，则它们的最大公约数为 a、b 中非0的那个； a、b 都不为0，则使新 a = b，新 b = a % b ，然后重复该过程。
+
+ 这就是欧几里得算法。*/
+	int a, b, n, temp;             //temp为存放a的变量
 	cin >> n;
 	for (int i = 1; i <= n; i++)
 	{
@@ -12,10 +15,10 @@ int main()
 		{
 			temp = a;
 			a = b;
-			b = temp%a;
+			b = temp%a;    //假设g为a，b的最大公约数，则g也为a， a mod b的最大公约数。利用这个不断循环直到其中之一为0，另一个就是最大公约数。
 			
 		}
-		cout << a<< endl;
+		cout << a<< endl;   //b为0时a则为所求
 
 	}
 }
