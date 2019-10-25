@@ -1,0 +1,43 @@
+#include<iostream>
+using namespace std;
+bool sushu(int i)//判断该数是否为素数
+{
+	for (int p = 2; p <= i; p++)
+	{
+		if (p == i)
+		{
+			return true;
+		}
+		if (i%p == 0)
+		{
+			break;
+		}
+	}
+	return false;
+}
+int main()
+{
+	int a, n, m = 0;
+	cin >> n;
+	for (int i = 1; i <= n; i++)
+	{
+		cin >> a;
+		for (int i = 2; i <= a; i++)//判断是否为质因数
+		{
+			if ((a%i == 0) && (sushu(i)))
+			{
+				m++;
+			}
+		}
+		if (m == 1)
+		{
+			cout << "Yes" << endl;
+
+		}
+		else
+		{
+			cout << "No" << endl;
+		}
+		m = 0;
+	}
+}
