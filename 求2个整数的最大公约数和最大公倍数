@@ -13,13 +13,7 @@ int gongyue(int a,int b)//求最大公约数（欧几里德求最大公约数）
 }
 int gongbei(int c, int d)//求最大公倍数
 {
-	for (int i = 1; i <= c*d; i++)
-	{
-		if ((i%c == 0) && (i%d == 0))
-		{
-			return i;
-		}
-	}
+	return c*d/gongyue(c,d);
 }
 int main()
 {
