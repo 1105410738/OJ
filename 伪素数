@@ -1,0 +1,33 @@
+#include<iostream>
+using namespace std;
+int main(void)
+{
+	int n;
+	cin >> n;
+	int a, m;
+	for (int i = 0; i<n; i++)
+	{
+		cin >> a >> m;
+		int t = 0, z = 0;
+		for (int x = 2; x<a; x++)
+		{
+			if (x*x>a)
+			{
+				t *= 2;
+				t -= z;
+				break;
+			}
+			if (x*x == a)
+				z = 1;
+			if (a%x == 0)
+				t++;
+			if (t>m)
+				break;
+		}
+		if (t>m)
+			cout << "no" << endl;
+		else
+			cout << "yes" << endl;
+	}
+	return 0;
+}
