@@ -1,0 +1,59 @@
+#include<iostream>
+using namespace std;
+#include"string.h"
+int main()
+{
+	char c[10000];
+	int n, h=0, f=0;
+	int m = 0;
+	char b[100];
+	int y;
+	cin >> n;
+	for (int i = 1; i <= n; i++)
+	{
+		cin >> c;
+		m = 0;
+		for ( y = 0; m != strlen(c);)//将是字母的字符送到数组b中
+		{
+				if ((c[m] >= 'a'&&c[m] <= 'z') || (c[m] >= 'A'&&c[m] <= 'Z'))
+				{
+					if ((c[m] >= 'a') && (c[m] <= 'z'))
+					{
+						c[m] = c[m] - 32;
+					}
+					b[y] = c[m]; m++; y++;
+				}
+				else{ m++; }
+		}
+		for (int j = 1; j < y; j++)//冒泡排序记住咯
+		{
+			for (int x = 0; x<y-j; x++)
+			{
+				if (b[x]>b[x + 1])
+				{
+					swap(b[x], b[x + 1]);
+				}
+			}
+		}
+		for (int s = 0; s < y; s++)
+		{
+			for (int u = 0; u < y; u++)//遍历数组找出相同字符
+			{
+				if ((b[u] == b[s]))
+				{
+					h++;
+				}
+			}
+			for (int t = 0; t < s; t++)//排除重复
+			{
+				if (b[t] == b[s])
+				{
+					f++;
+				}
+			}
+			if (!f){ cout << b[s] << " " << h << endl;  }
+			f = 0; h = 0;
+		}
+		m = 0;
+	}
+}
