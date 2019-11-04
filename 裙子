@@ -1,0 +1,22 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	int a, b;
+	cin >> a >> b;
+	int j = (b-a)/2;//控制空格与行数
+	int h;
+	for (int x = 0; x <= j; x++)//控制行数
+	{
+		for (int q = 1; q+x <= j; q++)
+		{
+			cout << " ";
+		}
+		for( h = 1; h <= a+2*x; h++)
+		{
+			cout << "*";
+		}
+		cout << endl;
+	}
+	return 0;
+}
