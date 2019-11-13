@@ -1,0 +1,43 @@
+#include<iostream>
+using namespace std;
+#include<math.h>
+#include<algorithm>
+int gongyin(int a, int b) //先求公因数
+{
+	if (a%b == 0)
+	{
+		return b;
+	}
+	else
+	{
+		return gongyin(b, a%b);
+	}
+}
+int gongbei(int a, int b)//利用公因数求公倍数
+{
+	int r;
+	r = a*b / gongyin(a, b);
+	return r;
+}
+int main()
+{
+	int n;
+	cin >> n;
+	int *fz = new int[n];
+	int *fm = new int[n];
+	for (int i = 0; i < n; i++)
+	{
+		cin >> fz[i]; cin >> fm[i];
+	}
+	int res = fm[0]; int sum = 0;
+	for (int i = 0; i < n; i++)//遍历数组求公倍数
+	{
+		res = gongbei(res, fm[i]);
+	}
+	for (int i = 0; i < n; i++)//通分
+	{
+		fz[i] = fz[i] * (res / fm[i]);
+		sum = sum + fz[i];
+	}
+	cout << sum / gongyin(sum, res) << " " << res / gongyin(sum, res);
+}
