@@ -1,0 +1,50 @@
+#include<iostream>
+using namespace std;
+#include<math.h>
+#include<algorithm>
+
+int main()
+{
+	int n;
+	cin >> n;
+	for (int i = 1; i <= n; i++)
+	{
+		int m;
+		cin >> m;
+		int *a = new int[m];
+		for (int i1 = 0; i1 < m; i1++)
+		{
+			cin >> a[i1];
+		}
+		for (int i1 = 1; i1 < m; i1++)
+		{
+			for (int i2 = 0; i2 < m - i1; i2++)
+			{
+				if (a[i2 + 1]<a[i2]){ swap(a[i2 + 1], a[i2]); }
+			}
+		}
+		int h=0, c=0;
+		int *a1 = new int[m];
+		int max = -1;
+		int z = 0;
+		for (int i1 = 0; i1 < m; i1++)
+		{
+			if (max != a[i1])
+			{
+				max = a[i1]; 
+				for (int i2 = 0; i2 < m; i2++)
+				{
+					if (max == a[i2]){ h++; }
+				}
+				if (h>c){ c = h; z = 0; a1[z] = max; }
+				else if (h == c){ z++; a1[z] = max;  }
+				h = 0;
+			}
+		}
+		for (int i1 = 0; i1 <= z; i1++)
+		{
+			if (i1 == z){ cout << a1[i1] << endl; }
+			else{ cout << a1[i1] << " "; }
+		}
+	}
+}
