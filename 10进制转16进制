@@ -1,0 +1,41 @@
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	int n;
+	cin >> n;
+	for (int i = 1; i <= n; i++)
+	{
+		int m;
+		cin >> m;
+		int z=0, m1;
+		m1 = m;
+		for (; m1 != 0;)
+		{
+			m1 = m1 / 16;
+			z++;
+		}
+		char *t = new char[z];
+		int c;
+		char w;
+		for (int i1 = 0; m != 0; i1++)
+		{
+			c = m % 16;
+			if (c == 10){ w = 'A'; }
+			else if (c == 11){ w = 'B'; }
+			else if (c == 12){ w = 'C'; }
+			else if (c == 13){ w = 'D'; }
+			else if (c == 14){ w = 'E'; }
+			else if (c == 15){ w = 'F'; }
+			else{ w = (char)(c+'0'); }
+			t[i1] = w;
+			m = m / 16;
+		}
+		for (int i =z-1; i >=0; i--)
+		{
+			cout << t[i];
+		}
+		cout << endl;
+	}
+}
