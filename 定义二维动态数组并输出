@@ -1,0 +1,33 @@
+#include<iostream>
+using namespace std;
+#include<string.h>
+
+int main()
+{
+	int m, n; cin >> m >> n;
+	int **a = new int *[m];
+	for (int i = 0; i < n; i++)
+	{
+		a[i] = new int[n];
+	}
+	int *p = &a[0][0];
+	for (int i = 0; i < m; i++)
+	{
+		for (int i1 = 0; i1 < n; i1++)
+		{
+			cin >> a[i][i1];
+		}
+	}
+	for (int i = 0; i < m; i++)
+	{
+		for (int i1 = 0; i1 < n; i1++)
+		{
+			if (i1 == n - 1){ cout << a[i][i1]; }
+			else
+			{
+				cout << a[i][i1] << " ";
+			}
+		}
+		cout << endl;
+	}
+}
