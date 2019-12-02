@@ -1,0 +1,27 @@
+
+#include<iostream>
+#include<string>
+#include<string.h>
+using namespace std;
+
+
+int main()
+{
+		string n;
+		getline(cin, n);
+		int c = n.length();
+		for (;c!=-1;)
+		{
+			 c = n.rfind(' ',c-1);
+			 for (int i1 = c + 1; i1 < n.length(); i1++)
+			 {
+				 if (n[i1] == ' '){ break; }
+				 else{ cout << n[i1]; }
+			 }
+			 if (c != -1)
+			 {
+				 cout << ' ';
+			 }
+		}
+
+}
