@@ -1,0 +1,72 @@
+#include<iostream>
+#include<string>
+#include<cstdlib>
+
+using namespace std;
+
+class Animal
+{
+private:
+	string name;
+public:
+	Animal(string n)
+	{
+		name = n;
+	}
+	~Animal()
+	{
+		cout << name << " is destroyed." << endl;
+	}
+	string getName()
+	{
+		return name;
+	}
+};
+
+class Pet:public Animal
+{
+private:int price;
+		string name;
+public:
+	Pet(string name, int price) :Animal(name)
+	{
+		this->price = price;
+		cout << "Create a pet named " << getName() << "." << endl;
+	}
+	void show()
+	{
+		cout << getName() << "'s price is "<<price<<"."<< endl;
+	}
+};
+class ExtinctAnimal :public Animal
+{
+private:int year;
+		string name;
+public:ExtinctAnimal(string name, int e) :Animal(name)
+	{
+		   year = e;
+		   cout << "Create an ancient animal named " << getName() << "." << endl;
+	}
+	   void show()
+	   {
+		   if (year >= 0)
+		   {
+			   cout << "The extinction time of " << getName() << " is " << abs(year) << " C.E." << endl;
+		   }
+		   else
+		   {
+			   cout << "The extinction time of " << getName() << " is " << abs(year) << " B.C.E." << endl;
+		   }
+	   }
+};
+
+int main()
+{
+	Pet p("Jerry", 100);
+	ExtinctAnimal a1("dinosaur", -65000000);
+	ExtinctAnimal a2("Dodo", 1681);
+	p.show();
+	a1.show();
+	a2.show();
+	return 0;
+}
