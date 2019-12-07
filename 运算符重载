@@ -1,0 +1,81 @@
+#include<iostream>
+#include<string>
+#include<ostream>
+#include<algorithm>
+using namespace std;
+
+
+class Figure
+{
+protected:int area;
+public:  
+	int getArea()
+		  {
+			  return area;
+		  }
+	template<typename T>
+	bool operator <(T &p)
+	{
+		if (area>p.area){ return true; }
+		else{ return false; }
+	}
+	
+	friend ostream & operator <<(ostream &out, Figure &a)
+	{
+		out << a.area;
+		return out;
+	}
+	
+};
+class Square :public Figure
+{
+private: int chan;
+public:Square(int chang) :Figure()
+{
+		   this->chan = chang;
+		   area = this->chan * this->chan;
+}
+
+};
+
+class Rectangle :public Figure
+{
+protected:int chang, kuang;
+public:  Rectangle(int chang, int kuang) :Figure()
+		  {
+			  this->chang = chang;
+			  this->kuang = kuang;
+			  area = this->chang*this->kuang;
+		  }
+};
+template<typename T>
+void sort(T a[], int n)
+{
+	for (int i = 1; i < n; i++)
+	{
+		for (int i1 = 0; i1 < n - i; i1++)
+		{
+			if (a[i1] < a[i1+1]){ swap(a[i1 + 1], a[i1]); }
+		}
+	}
+}
+template<typename T>
+void print(T a[], int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		cout << a[i] << endl;
+	}
+}
+
+
+int main()
+{
+	Figure f[5] = { Square(4), Rectangle(3, 4), Rectangle(6, 8), Square(2), Square(10) };
+	cout << "Before sorting:" << endl;
+	print(f, 5);
+	sort(f, 5);
+	cout << "After sorting:" << endl;
+	print(f, 5);
+	return 0;
+}
