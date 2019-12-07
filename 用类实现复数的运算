@@ -1,0 +1,105 @@
+#include<iostream>
+#include<math.h>
+using namespace std;
+
+class Complex
+{
+private:double x; double y;
+public:Complex(double a, double a1) :x(a), y(a1)
+	{
+		   ;
+	}
+	   Complex()
+	   {
+		   ;
+	   }
+	   Complex operator+(Complex &e)
+	   {
+		   Complex c;
+		   c.x = x + e.x;
+		   c.y = y + e.y;
+		   return c;
+	   }
+	   Complex operator-(Complex &e)
+	   {
+		   Complex c;
+		   c.x = x - e.x;
+		   c.y = y - e.y;
+		   return c;
+	   }
+	   bool operator==(Complex &e)
+	   {
+		   if ((x == e.x) && (y == e.y))
+		   {
+			   return true;
+		   }
+		   else
+		   {
+			   return false;
+		   }
+	   }
+	   Complex operator*(Complex &e)
+	   {
+		   Complex c;
+		   c.x = x * e.x - y*e.y;
+		   c.y = x*e.y + y*e.x;
+		   return c;
+	   }
+	   Complex operator/(Complex &e)
+	   {
+		   Complex c;
+		   c.x = (x * e.x + y*e.y) / (e.x*e.x + e.y*e.y);
+		   c.y = (y*e.x - x*e.y) / (e.x*e.x + e.y*e.y);
+		   return c;
+	   }
+	   bool operator!=(Complex &e)
+	   {
+		   if ((x == e.x) && (y == e.y))
+		   {
+			   return false;
+		   }
+		   else
+		   {
+			   return true;
+		   }
+	   }
+	   void display()
+	   {
+		   if (x == 0)
+		   {
+			   cout << y << 'i' << endl;
+		   }
+		   else
+		   {
+			   if (y<0)
+			   cout << x << y << 'i' << endl;
+			   else
+			   {
+				   cout << x<<'+' << y << 'i' << endl;
+			   }
+		   }
+	   }
+	   
+};
+
+int main()
+{
+	Complex c1(2, 10), c2(2, 6), c5, c6;
+	Complex c3 = c1 + c2 + c2;
+	Complex c4 = c1 - c2;
+	c1.display();
+	c2.display();
+	c3.display();
+	c4.display();
+	if (c3 == c4)
+		c5 = c3 * c4;
+	else
+		c5 = c3 / c4;
+	c5.display();
+	if (c1 != c2)
+		c6 = c1 * c2;
+	else
+		c6 = c1 / c2;
+	c6.display();
+	return 0;
+}
