@@ -1,0 +1,99 @@
+#include<iostream>
+using namespace std;
+#include<string>
+
+
+int main()
+{
+	string n;
+	cin >> n;
+	int xiaoshu = 0, fenshu = 0, baifenshu = 0, z = 0;
+	for (int i = 0; i < n.size(); i++)
+	{
+		if (n[i] == '.'){ z = i; xiaoshu++; break; }
+		if (n[i] == '%'){ z = i; baifenshu++; break; }
+		if (n[i] == '/'){ z = i; fenshu++; break; }
+	}
+	int e = 0;
+	int e1 = 0;
+	int t = 0;
+	if (xiaoshu)
+	{
+		for (int i = z - 1; i >= 0; i--)
+		{
+			if (n[i] != '0'){ e++; }
+			if (e!=0)
+			{
+				cout << n[i];
+			}
+			//int search = n.rfind('0', z+e);
+			//if (n[search + 1] == '.'){ e++; }
+		}
+		if (e == 0){ cout << 0; }
+		cout << '.';
+		//int *a = new int[n.size() - (z + 1)];
+		for (int i = z+1; i <n.size()-1; i++)
+		{
+			if (n[i] != '0'){ e1 = i; break; }
+		}
+		if (e1 == 0){ cout << 0; }
+		else
+		{
+			for (int i = n.size() - 1; i >= e1; i--)
+			{
+				cout << n[i];
+			}
+		}
+	}
+	else if (fenshu)
+	{
+		for (int i = z - 1; i >= 0; i--)
+		{
+			if (n[i] != '0'){ e++; }
+			if (e != 0)
+			{
+				cout << n[i];
+			}
+		}
+		if (e == 0){ cout << 0; }
+		//else
+		//{
+			cout << '/'; 
+			for (int i = n.size() - 1; i >=z+1; i--)
+			{
+				if (n[i] != '0'){ e1 = i; break; }
+			}
+			
+				for (int i = e1; i >= z+1; i--)
+				{
+					cout << n[i];
+				}
+		//}
+	}
+	else if (baifenshu)
+	{
+		for (int i = z - 1; i >= 0; i--)
+		{
+			if (n[i] != '0'){ e++; }
+			if (e != 0)
+			{
+				cout << n[i];
+			}
+		}
+		if (e == 0){ cout << 0; }
+		cout << '%'; 
+	}
+	else
+	{
+		for (int i = n.size() - 1; i >= 0; i--)
+		{
+			if (n[i] != '0'){ e++; }
+			if (e != 0)
+			{
+				cout << n[i];
+			}
+		}
+		if (e == 0){ cout << 0; }
+	}
+
+}
