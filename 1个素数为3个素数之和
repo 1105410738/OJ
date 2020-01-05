@@ -1,0 +1,34 @@
+#include<iostream>
+using namespace std;
+#include<math.h>
+#include<string>
+
+
+bool sushu(int a)
+{
+	for (int i = 2; i <= sqrt(a); i++)
+	{
+		if (a%i == 0){ return false; }
+	}
+	return true;
+}
+
+int main()
+{
+	int a; cin >> a;
+	int c = 0;
+	int h = 0;
+	for (int i = 2; i < a - 4; i++)
+	{
+		for (int i1 = 2; i1 < a - 4; i1++)
+		{
+			c = a - i - i1;
+			if (sushu(c) && sushu(i) && sushu(i1))
+			{
+				cout << i << " " << i1 << " " << c; h++; break;
+			}
+		}
+		if (h == 1){ break; }
+	}
+
+}
