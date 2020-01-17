@@ -1,0 +1,75 @@
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	int n; cin >> n;
+	int *a = new int[n+1];
+	for (int i = 0; i <=n; i++)
+	{
+		cin >> a[i];
+	}
+	for (int i = n,i1=0; i>=0;i1++,i--)
+	{
+		if (i == n)
+		{
+			if (a[i1] == 0){n--; continue; }
+			if (i == 0)
+			{
+				cout << a[i1];
+			}
+			else if (i == 1)
+			{
+				if (a[i1] == 1){ cout << "x"; }
+				else if (a[i1] == -1){ cout << '-' << 'x'; }
+				else{ cout << a[i1] << "x"; }
+			}
+			else
+			{
+				if (a[i1] == 1){ cout << "x^" << i; }
+				else if (a[i1] == -1){ cout << '-' << "x^" << i; }
+				else{ cout << a[i1] << "x^" << i; }
+			}
+		}
+		else
+		{
+			if (a[i1] > 0)
+			{ 
+				cout << '+'; 
+				if (i == 0)
+				{
+					cout << a[i1];
+				}
+				else if (i == 1)
+				{
+					if (a[i1] == 1){ cout << "x" ; }
+					else{ cout << a[i1] << "x"; }
+				}
+				else
+				{
+					if (a[i1] == 1){ cout << "x^" << i; }
+					else{ cout << a[i1] << "x^" << i; }
+				}
+			}
+			else if (a[i1] < 0)
+			{
+				if (i == 0)
+				{
+					cout << a[i1];
+				}
+				else if (i == 1)
+				{
+					if (a[i1] == -1){ cout <<'-'<< "x"; }
+					else{ cout << a[i1] << "x"; }
+				}
+				else
+				{
+					if (a[i1] == -1){ cout <<'-'<< "x^" << i; }
+					else{ cout << a[i1] << "x^" << i; }
+				}
+			}
+			else{ continue; }
+		}
+	}
+	return 0;
+}
