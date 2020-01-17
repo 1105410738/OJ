@@ -1,0 +1,29 @@
+复制代码
+#include<iostream>
+using namespace std;
+int main()
+{
+    int row,col;
+    cin>>row>>col;
+    //为行指针分配空间 
+    int **arr=new int *[row];    
+    for(int i=0;i<row;i++)
+         arr[i]= new int[col];//为每行分配空间（每行中有col个元素） 
+    //输入二维数组的数 
+    for(int i=0;i<row;i++)
+        for(int j=0;j<col;j++) 
+        cin>>arr[i][j];
+    cout<<"*******************"<<endl;
+     //输出二维数组中的数  
+    for(int i=0;i<row;i++)
+    {
+         for(int j=0;j<col;j++) 
+          cout<<arr[i][j]<<" ";
+        cout<<endl;
+    } 
+    //释放二维数组（反过来） 
+    for(int i=0;i<row;i++)
+        delete[] arr[i]; 
+    delete[] arr;
+    return 0;
+}
