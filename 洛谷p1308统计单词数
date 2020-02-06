@@ -1,0 +1,57 @@
+#include<iostream>
+using namespace std;
+#include<string>
+#include<math.h>
+
+void change(string &a)
+{
+	for (int i = 0; i < a.length(); i++)
+	{
+		if ((a[i] >= 'A')&&(a[i] <= 'Z'))
+		{
+			a[i] += 32;
+		}
+	}
+}
+
+
+int main()
+{
+	string a; cin >> a;
+	string n; getline(cin, n);
+	string b; getline(cin, b);
+	change(a); change(b);
+	b = ' ' + b;
+	//cout << a << endl << b;
+	int biaoji = 0;
+	int first = 0, cnt = 0;
+	int c = 0;
+	int d = b.find(" ", 0);
+	int t = 0;
+	for (; c != -1;)
+	{
+		string str;
+			for (int i = c; i <= d; i++)
+			{
+				if (b[i] != ' ')
+				{	str += b[i];}
+			}
+		if (str == a){ cnt++; biaoji++; }
+		if (biaoji == 1)
+		{
+			first = c; biaoji++;
+		}
+		c = d;
+		d = b.find(" ", c+1);
+	}
+	if (cnt != 0)
+	{
+		cout << cnt << " " << first;
+	}
+	else
+	{
+		cout << -1;
+	}
+
+}
+
