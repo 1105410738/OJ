@@ -1,0 +1,96 @@
+#include<iostream>
+using namespace std;
+#include<cmath>
+#include<string>
+
+void insert(char &a, char &b,string &c,int p1,int p2,int p3,int e)
+{
+	string in;
+	for (char i = a+1; i < b; i++)
+	{
+		for (int i1 = 1; i1 <= p2; i1++)
+		{
+			in += i;
+		}
+	}
+	if (p1 == 1)
+	{
+		for (int i = 0; i < in.size(); i++)
+		{
+			if (in[i] >= 'A'&&in[i] <= 'Z')
+			{
+				in[i] += 32;
+			}
+		}
+	}
+	else if (p1 == 2)
+	{
+		for (int i = 0; i < in.size(); i++)
+		{
+			if (in[i] >= 'a'&&in[i] <= 'z')
+			{
+				in[i] -= 32;
+			}
+		}
+	}
+	else if (p1 == 3)
+	{
+		for (int i = 0; i < in.size(); i++)
+		{
+				in[i] ='*';
+		}
+	}
+	string rin;
+	if (p3 == 2)
+	{
+		for (int i = in.size()-1; i >=0; i--)
+		{
+			rin += in[i];
+		}
+	}
+
+	for (int i = e; i < c.size()-1; i++)
+	{
+		if ((c[i] == '-') && (i!=0))
+		{
+			if (c[i-1] < c[i+1])
+			{
+				if (isalpha(a) && isalpha(b))
+				{
+					c.erase(i, 1);
+					if (p3 == 2)
+					{
+						c.insert(i, rin);
+					}
+					else{ c.insert(i, in); }
+					break;
+				}
+				else if (isdigit(a) && isdigit(b))
+				{
+					c.erase(i, 1);
+					if (p3 == 2)
+					{
+						c.insert(i, rin);
+					}
+					else{ c.insert(i, in); }
+					break;
+				}
+			}
+			break;
+		}
+	}
+}
+
+int main()
+{
+	int p1, p2, p3;
+	cin >> p1 >> p2 >> p3;
+	string a;
+	cin >> a;
+	for (int i = 1 ; i < a.size()-1; i++)
+	{
+		if (a[i] == '-'){ insert(a[i - 1], a[i + 1], a,p1,p2,p3,i); }
+	}
+	cout << a;
+	
+}
