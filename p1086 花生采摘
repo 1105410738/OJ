@@ -1,0 +1,71 @@
+#include<iostream>
+using namespace std;
+#include<cmath>
+#include<cstring>
+
+
+int main()
+{
+	int m, n, k;
+	cin >> m >> n >> k;
+	int **farm = new int*[m];
+	for (int i = 0; i < m; i++)
+	{
+		farm[i] = new int[n];
+	}
+	int huasheng[441]; int s = 0; memset(huasheng, 0, sizeof(huasheng));
+	int hang[501]; memset(hang,0,sizeof(hang));
+	int lie[501]; memset(lie, 0, sizeof(lie));
+	for (int i = 0; i < m; i++)
+	{
+		for (int i1 = 0; i1 < n; i1++)
+		{
+			cin >> farm[i][i1];
+			if (farm[i][i1] != 0)
+			{
+				huasheng[s] = farm[i][i1]; s++;
+				hang[farm[i][i1]] = i;
+				lie[farm[i][i1]] = i1;
+			}
+		}
+	}
+	for (int i = 0; i < s; i++)
+	{
+		for (int i1 = 0; i1 < s-i-1; i1++)
+		{
+			if (huasheng[i1] < huasheng[i1 + 1]){ swap(huasheng[i1], huasheng[i1 + 1]); }
+		}
+	}
+	int sum = 0; int temp = 0;
+	if (hang[huasheng[0]] < k)
+	{
+		sum += huasheng[0];
+		temp += hang[huasheng[0]]+2;
+		if (temp + hang[huasheng[0]]+1 < k)
+		{
+			for (int i = 0;i<s; i++)
+			{
+				if (temp + abs(hang[huasheng[i]] - hang[huasheng[i + 1]])+abs(lie[huasheng[i]]-lie[huasheng[i+1]])<k)
+				{
+					sum += huasheng[i + 1];
+					temp += 1+abs(hang[huasheng[i]] - hang[huasheng[i + 1]]) + abs(lie[huasheng[i]] - lie[huasheng[i + 1]]);
+					if (temp + hang[huasheng[i + 1]] + 1 <= k){  continue; }
+					else
+					{
+						sum -= huasheng[i+1];
+						break;
+					}
+				}
+				else
+				{
+					break;
+				}
+			}
+		}
+		else
+		{
+			sum -= huasheng[0];
+		}
+	}
+	cout << sum;
+}
